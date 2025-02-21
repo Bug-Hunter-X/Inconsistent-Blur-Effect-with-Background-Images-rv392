@@ -1,0 +1,23 @@
+One potential workaround involves applying the blur effect to a pseudo-element (`::before` or `::after`) positioned over the element with the background image. This separates the blur effect from the background image itself.  Here's an example:
+
+```css
+.blurred-background {
+  position: relative;
+  background-image: url('complex-image.jpg'); /* Or your gradient */
+}
+
+.blurred-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: inherit; /*Inherits background-color of parent, if any*/
+  filter: blur(5px);
+  z-index: -1; 
+  background-image: url('complex-image.jpg');/*Or your gradient*/
+}
+```
+
+This method may not perfectly replicate the desired effect in all cases, and might require adjustments depending on the specific scenario. Consider testing across various browsers to ensure consistent results.
